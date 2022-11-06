@@ -1,0 +1,16 @@
+th, td {
+    border: 1px solid black;
+  }
+
+  div {
+    display: block;
+    margin:auto;
+  }
+
+
+  table {
+    height:40%;
+    width:50%;
+    text-align: center;
+    border: 1px solid black;
+  }

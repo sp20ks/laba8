@@ -1,0 +1,20 @@
+<head></head>
+<body>
+  <h1>Adding length of sequence and sequence</h1>
+  <%=form_with url: '/elements/result', method: :get do |form|%>
+    <div>
+      <%= form.label :length%>
+      <%= form.number_field :length %>
+    </div>
+
+    <div>
+      <%= form.label :sequence%>
+      <%= form.text_field :str_elem%> 
+    </div>
+
+    <div>
+      <%= form.submit "calculate"%>
+    </div>
+  <%end%>
+</body>
+

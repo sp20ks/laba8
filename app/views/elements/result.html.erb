@@ -1,0 +1,45 @@
+<head>
+</head>
+<body>
+  <h1>Result of completing task</h1>
+  <%unless @error.length.zero?%>
+    <%@error.each do |err|%>
+      <div><%=err%></div>
+    <%end%>
+  <%else%>
+    <table>
+      <tr>
+        <th>Task</th>
+        <th>Result of task</th>
+      </tr>
+      <tr>
+        <td>Length of sequence</td>
+        <td><%=@length_of_arr%></td>
+      </tr>
+      <tr>
+        <td>Sequence</td>
+        <td><%=@array%></td>
+      </tr>
+      <tr>
+      <%if !@array_of_pow.length.zero?%> 
+        <td>Sequences of powers of 5</td>
+        <td><%@array_of_pow.each do |elem|%>
+              <p><%=elem%></p>
+            <%end%>
+        </td>
+      </tr>
+      <tr>
+        <td>Sequence of powers of 5 with max length</td>
+        <td><%=@max_subarr%></td>
+      </tr>
+      <tr>
+        <td>Number of sequences of powers of 5</td>
+        <td><%=@array_of_pow.length%></td>
+      </tr>
+            <%else%>
+                <p>There are no sequences of powers of 5</p>
+            <%end%>
+    </table>
+  <%end%>
+  <div><%=link_to "return to home page", "/"%></div>
+</body>
