@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'rails_helper'
 
-require '/home/ksusha/uni/labs_web/laba8/app/controllers/elements_controller'
+#  require '/home/ksusha/uni/labs_web/laba8/app/controllers/elements_controller'
 
 # testing ElementsController
 RSpec.describe ElementsController, type: :controller do
@@ -35,5 +35,19 @@ RSpec.describe ElementsController, type: :controller do
       get :index
       expect(response.status).to eq(200)
     end
+  end
+
+  describe 'GET index' do
+    it 'has a 200 status code' do
+      get :index
+      expect(response.status).to eq(200)
+    end
+  end
+end
+
+RSpec.describe ElementsController, type: 'request' do
+  it 'expects to see sequences of powers of 5' do
+    get '/elements/result?length=7&str_elem=1+2+3+4+5+6+7'
+    expect(assigns[:length_of_arr]).to eq(7)
   end
 end

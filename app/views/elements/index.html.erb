@@ -1,20 +1,22 @@
-<head></head>
-<body>
   <h1>Adding length of sequence and sequence</h1>
+  <p>
+    Input sequence of positive integers separated by space
+  </p>
   <%=form_with url: '/elements/result', method: :get do |form|%>
-    <div>
+    <div class = 'form-group' style = 'width: 60%;'>
       <%= form.label :length%>
-      <%= form.number_field :length%>
+      <%= form.number_field(:length, {:class => 'form-control'})%>
     </div>
 
-    <div>
+    <div class = 'form-group' style = 'width: 60%;'>
       <%= form.label :sequence%>
-      <%= form.text_field :str_elem%> 
+      <%= form.text_field(:str_elem, {:class => 'form-control'})%> 
     </div>
 
-    <div>
-      <%= form.submit "calculate"%>
+    <div class = 'form-group' style = 'width: 60%; margin-top: 10px;'>
+      <%= form.submit "calculate", class: 'btn btn-primary' %>
     </div>
   <%end%>
-</body>
+
+
 

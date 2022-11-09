@@ -66,6 +66,7 @@ group :development do
   # gem "spring"
 end
 
+gem 'rails-controller-testing'
 group :development, :test do
   gem 'rspec-rails', ">= 3.9.0"
 end

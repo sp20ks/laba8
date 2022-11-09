@@ -24,7 +24,8 @@ class ElementsController < ApplicationController
     array.each do |elem|
       if power_of_5?(elem) then buf << elem
       elsif !buf.length.zero?
-        res << buf = []
+        res << buf
+        buf = []
       end
     end
     res << buf unless buf.length.zero?
