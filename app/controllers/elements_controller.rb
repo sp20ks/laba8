@@ -43,9 +43,8 @@ class ElementsController < ApplicationController
   end
 
   def result
-    @error = []
-    ElementsController.data_check(params[:length].to_i, params[:str_elem], @error)
-    if @error.length.zero?
+    flash[:alert] = ElementsController.data_check(params[:length].to_i, params[:str_elem])
+    unless flash[:alert]
       @length_of_arr = params[:length].to_i
       @array = params[:str_elem].split.map!(&:to_i)
       @array_of_pow = ElementsController.segments_of_powers(@array)
@@ -53,11 +52,11 @@ class ElementsController < ApplicationController
     end
   end
 
-  def self.data_check(len, str, buf)
-    if /[^\d^\s]/.match(str) then buf << "Sequence isn't correct"
+  def self.data_check(len, str)
+    if /[^\d^\s]/.match(str) then "Sequence isn't correct"
     else
       arr = str.split.map!(&:to_i)
-      buf << "Length isn't correct" unless arr.length == len
+      "Length isn't correct" if arr.length != len
     end
   end
 end

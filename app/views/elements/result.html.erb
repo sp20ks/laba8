@@ -2,10 +2,8 @@
 </head>
 <body>
   <h1>Result of completing task</h1>
-  <%unless @error.length.zero?%>
-    <%@error.each do |err|%>
-      <div><%=err%></div>
-    <%end%>
+  <%if flash[:alert]%>
+    <div class = 'alert alert-danger' style = 'width: 60%;'><%=flash[:alert]%></div>
   <%else%>
     <table class='table table-bordered' style = 'width: 60%;'>
       <tr>

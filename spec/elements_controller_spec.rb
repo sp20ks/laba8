@@ -18,25 +18,6 @@ RSpec.describe ElementsController, type: :controller do
     expect(ElementsController.segments_of_powers(arr)).to eq([])
   end
 
-  it 'add message that discribes error' do
-    error_length = ["Length isn't correct"]
-    buf = []
-    ElementsController.data_check(5, '1 2 3 4', buf)
-    expect(buf).to eq(error_length)
-
-    error_sequence = ["Sequence isn't correct"]
-    buf = []
-    ElementsController.data_check(5, '1 2 3 4#%$% dsdfzsrf', buf)
-    expect(buf).to eq(error_sequence)
-  end
-
-  describe 'GET index' do
-    it 'has a 200 status code' do
-      get :index
-      expect(response.status).to eq(200)
-    end
-  end
-
   describe 'GET index' do
     it 'has a 200 status code' do
       get :index
@@ -49,5 +30,13 @@ RSpec.describe ElementsController, type: 'request' do
   it 'expects to see sequences of powers of 5' do
     get '/elements/result?length=7&str_elem=1+2+3+4+5+6+7'
     expect(assigns[:length_of_arr]).to eq(7)
+  end
+
+  it 'alert message' do
+    get '/elements/result?length=7&str_elem=1+2+3+4+5+6+q'
+    expect(flash[:alert]).to eq("Sequence isn't correct")
+
+    get '/elements/result?length=4&str_elem=1+2+3+4+5+6'
+    expect(flash[:alert]).to eq("Length isn't correct")
   end
 end
